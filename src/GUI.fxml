@@ -24,7 +24,7 @@
          </font>
       </Label>
     <Button fx:id="logIn_btn" layoutX="216.0" layoutY="313.0" mnemonicParsing="false" onAction="#logIn" prefHeight="40.0" prefWidth="75.0" text="Log In" />
-      <Label layoutX="141.0" layoutY="101.0" prefHeight="79.0" prefWidth="219.0" text="Mivhanet" textFill="#e8e8e8">
+      <Label layoutX="141.0" layoutY="101.0" prefHeight="79.0" prefWidth="219.0" text="Mivhanet" textFill="WHITE">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
