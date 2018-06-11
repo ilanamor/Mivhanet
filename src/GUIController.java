@@ -35,9 +35,9 @@ public class GUIController {
             Scene scene = new Scene(root, 700, 470);
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
-            Stage stage2=(Stage)userName_txtfld.getScene().getWindow();
-            MenuGUIController.user=userName_txtfld.getText();
-            stage2.close();
+            //Stage stage2=(Stage)userName_txtfld.getScene().getWindow();
+            //MenuGUIController.user=userName_txtfld.getText();
+            //stage2.close();
             stage.show();
         }
         else
@@ -48,12 +48,8 @@ public class GUIController {
 
     }
     private void showAlertError(String alertMessage) {
-
         Alert alert = new Alert(Alert.AlertType.ERROR);
-
         alert.setContentText(alertMessage);
-
         alert.show();
-
     }
 }
