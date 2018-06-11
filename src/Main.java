@@ -12,7 +12,7 @@ public class Main extends Application {
 
         @Override
         public void start(Stage primaryStage) throws Exception{
-            Parent root = FXMLLoader.load(getClass().getResource("AddCoGUI.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
             primaryStage.setTitle("Mivhanet System");
             primaryStage.setScene(new Scene(root, 500, 500));
             primaryStage.show();
