@@ -13,11 +13,6 @@
       <TextField fx:id="password_txtfld" layoutX="214.0" layoutY="263.0" />
       <TextField fx:id="userName_txtfld" layoutX="214.0" layoutY="215.0" />
       <ButtonBar layoutX="113.0" layoutY="342.0" prefHeight="40.0" prefWidth="200.0" />
-      <Label layoutX="144.0" layoutY="101.0" prefHeight="79.0" prefWidth="219.0" text="Mivhanet" textFill="#e8e8e8">
-         <font>
-            <Font name="System Bold" size="48.0" />
-         </font>
-      </Label>
       <Label layoutX="113.0" layoutY="214.0" prefHeight="27.0" prefWidth="95.0" text="User name" textFill="#fffefe">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -29,5 +24,10 @@
          </font>
       </Label>
     <Button fx:id="logIn_btn" layoutX="216.0" layoutY="315.0" mnemonicParsing="false" onAction="#logIn" prefHeight="40.0" prefWidth="75.0" text="Log In" />
+      <Label layoutX="141.0" layoutY="101.0" prefHeight="79.0" prefWidth="219.0" text="Mivhanet" textFill="#e8e8e8">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

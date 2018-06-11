@@ -8,20 +8,38 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateQGUIController">
+<AnchorPane prefHeight="501.0" prefWidth="506.0" style="-fx-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4oAXWNdjAiagzNumyxF-Ip2fE6UsrVgxAKAtr7qqoQhQYwvQuw'); -fx-background-size: 500 500;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateQGUIController">
    <children>
-      <ChoiceBox fx:id="chooseCourse_box" layoutX="54.0" layoutY="61.0" prefWidth="150.0" />
-      <Label layoutX="54.0" layoutY="30.0" prefHeight="25.0" prefWidth="98.0" text="choose course">
+      <ChoiceBox fx:id="chooseCourse_box" layoutX="152.0" layoutY="66.0" prefWidth="150.0" />
+      <Label layoutX="51.0" layoutY="66.0" prefHeight="25.0" prefWidth="98.0" text="choose course" textFill="#fcfcfc">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="55.0" layoutY="110.0" text="Qustion Body" />
-      <Label layoutX="56.0" layoutY="185.0" text="Add Answer1" />
-      <Label layoutX="56.0" layoutY="224.0" text="Add Answer2" />
-      <Label layoutX="56.0" layoutY="263.0" text="Add Answer3" />
-      <Label layoutX="52.0" layoutY="303.0" text="Add comment" />
-      <Label layoutX="65.0" layoutY="146.0" text="Add time" />
+      <Label layoutX="55.0" layoutY="110.0" text="Qustion Body" textFill="#fcfcfc">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="56.0" layoutY="185.0" text="Add Answer1" textFill="#f8f8f8">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="56.0" layoutY="224.0" text="Add Answer2" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="56.0" layoutY="263.0" text="Add Answer3" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="52.0" layoutY="303.0" text="Add comment" textFill="#f2efef">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="65.0" layoutY="146.0" text="Add time" textFill="#f8f8f8">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
       <Label layoutX="64.0" layoutY="303.0" />
       <TextField fx:id="qustionBodt_fld" layoutX="152.0" layoutY="106.0" />
       <TextField fx:id="time_fld" layoutX="152.0" layoutY="142.0" />

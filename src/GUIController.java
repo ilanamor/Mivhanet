@@ -32,7 +32,7 @@ public class GUIController {
             stage.setTitle("Mivhanet System");
             FXMLLoader fxmlLoader = new FXMLLoader();
             Parent root = fxmlLoader.load(getClass().getResource("MenuGUI.fxml").openStream());
-            Scene scene = new Scene(root, 700, 470);
+            Scene scene = new Scene(root, 500, 500);
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
             Stage stage2=(Stage)userName_txtfld.getScene().getWindow();
