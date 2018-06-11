@@ -2,10 +2,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.LinkedList;
@@ -21,11 +18,13 @@ public class CreateQGUIController{
     public TextField answer2_fld;
     public TextField answer3_fld;
     public TextField comment_fld;
-
+    public CheckBox isTrue1;
+    public CheckBox isTrue2;
+    public CheckBox isTrue3;
 
     @FXML
     public void initialize() {
-        //The system retrieves user information and courses in which it is a team member
+        //KARIN AND ILANA - The system retrieves user information and courses in which it is a team member
         String[] courses=new String[50];
         for (String str:courses) {
             chooseCourse_box.getItems().add(str);
@@ -35,12 +34,13 @@ public class CreateQGUIController{
 
 
     public void addQuestion(ActionEvent actionEvent) {
-
         if(answer1_fld.getText().equals("") ||answer2_fld.getText().equals("")|| answer2_fld.getText().equals("") ){
             showAlertError("You Must add at least 2 answers");
+
         //ILANA KARIN The system saves the answers to the question
-        String Course=chooseCourse_box.getValue().toString();
-        //IK The question information is stored in the current course
+        String courseName=chooseCourse_box.getValue().toString();
+
+        //KARIN AND ILANA - The question information is stored in the current course - also check that at least one answer is true (checkbox)
 
         }
     }

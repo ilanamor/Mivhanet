@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -10,47 +11,52 @@
 
 <AnchorPane prefHeight="501.0" prefWidth="506.0" style="-fx-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4oAXWNdjAiagzNumyxF-Ip2fE6UsrVgxAKAtr7qqoQhQYwvQuw'); -fx-background-size: 500 500;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateQGUIController">
    <children>
-      <ChoiceBox fx:id="chooseCourse_box" layoutX="152.0" layoutY="66.0" prefWidth="150.0" />
-      <Label layoutX="51.0" layoutY="66.0" prefHeight="25.0" prefWidth="98.0" text="choose course" textFill="#fcfcfc">
+      <ChoiceBox fx:id="chooseCourse_box" layoutX="152.0" layoutY="121.0" prefWidth="150.0" />
+      <Label layoutX="51.0" layoutY="121.0" prefHeight="25.0" prefWidth="98.0" text="choose course" textFill="#fcfcfc">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="55.0" layoutY="110.0" text="Qustion Body" textFill="#fcfcfc">
+      <Label layoutX="55.0" layoutY="164.0" text="Qustion Body" textFill="#fcfcfc">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="56.0" layoutY="185.0" text="Add Answer1" textFill="#f8f8f8">
+      <Label layoutX="56.0" layoutY="240.0" text="Add Answer1" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="56.0" layoutY="224.0" text="Add Answer2" textFill="WHITE">
+      <Label layoutX="56.0" layoutY="279.0" text="Add Answer2" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="56.0" layoutY="263.0" text="Add Answer3" textFill="#fffefe">
+      <Label layoutX="56.0" layoutY="318.0" text="Add Answer3" textFill="#fffefe">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="52.0" layoutY="303.0" text="Add comment" textFill="#f2efef">
+      <Label layoutX="52.0" layoutY="358.0" text="Add comment" textFill="#f2efef">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="65.0" layoutY="146.0" text="Add time" textFill="#f8f8f8">
+      <Label layoutX="80.0" layoutY="200.0" text="Add time" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="64.0" layoutY="303.0" />
-      <TextField fx:id="qustionBodt_fld" layoutX="152.0" layoutY="106.0" />
-      <TextField fx:id="time_fld" layoutX="152.0" layoutY="142.0" />
-      <TextField fx:id="answer1_fld" layoutX="152.0" layoutY="181.0" />
-      <TextField fx:id="answer2_fld" layoutX="152.0" layoutY="220.0" />
-      <TextField fx:id="answer3_fld" layoutX="152.0" layoutY="259.0" />
-      <TextField fx:id="comment_fld" layoutX="152.0" layoutY="300.0" />
-      <ButtonBar layoutX="152.0" layoutY="337.0" prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-          <Button fx:id="addQuestion_fld" mnemonicParsing="false" onAction="#addQuestion" text="Add Question" />
-        </buttons>
-      </ButtonBar>
+      <Label layoutX="64.0" layoutY="358.0" />
+      <TextField fx:id="qustionBodt_fld" layoutX="152.0" layoutY="161.0" />
+      <TextField fx:id="time_fld" layoutX="152.0" layoutY="197.0" />
+      <TextField fx:id="answer1_fld" layoutX="152.0" layoutY="236.0" />
+      <TextField fx:id="answer2_fld" layoutX="152.0" layoutY="275.0" />
+      <TextField fx:id="answer3_fld" layoutX="152.0" layoutY="314.0" />
+      <TextField fx:id="comment_fld" layoutX="152.0" layoutY="355.0" />
+      <ButtonBar layoutX="233.0" layoutY="392.0" prefHeight="40.0" prefWidth="119.0" />
+      <Label layoutX="73.0" layoutY="40.0" text="Create New Question" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="isTrue1" layoutX="316.0" layoutY="240.0" mnemonicParsing="false" text="Is true Answer" textFill="WHITE" />
+      <CheckBox fx:id="isTrue2" layoutX="316.0" layoutY="279.0" mnemonicParsing="false" text="Is true Answer" textFill="WHITE" />
+      <CheckBox fx:id="isTrue3" layoutX="316.0" layoutY="318.0" mnemonicParsing="false" text="Is true Answer" textFill="WHITE" />
+    <Button fx:id="addQuestion_fld" layoutX="152.0" layoutY="397.0" mnemonicParsing="false" onAction="#addQuestion" prefHeight="25.0" prefWidth="149.0" text="Add Question" />
    </children>
 </AnchorPane>
