@@ -7,27 +7,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="596.0" style="-fx-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4oAXWNdjAiagzNumyxF-Ip2fE6UsrVgxAKAtr7qqoQhQYwvQuw'); -fx-background-size: 600 600;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIController">
+<AnchorPane prefHeight="499.0" prefWidth="500.0" style="-fx-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4oAXWNdjAiagzNumyxF-Ip2fE6UsrVgxAKAtr7qqoQhQYwvQuw'); -fx-background-size: 500 500;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIController">
    <children>
-      <ButtonBar layoutX="134.0" layoutY="165.0" prefHeight="40.0" prefWidth="200.0" />
-      <TextField fx:id="password_txtfld" layoutX="254.0" layoutY="281.0" />
-      <TextField fx:id="userName_txtfld" layoutX="254.0" layoutY="233.0" />
-      <ButtonBar layoutX="153.0" layoutY="360.0" prefHeight="40.0" prefWidth="200.0" />
-      <Label layoutX="184.0" layoutY="119.0" prefHeight="79.0" prefWidth="219.0" text="Mivhanet" textFill="#e8e8e8">
+      <ButtonBar layoutX="94.0" layoutY="147.0" prefHeight="40.0" prefWidth="200.0" />
+      <TextField fx:id="password_txtfld" layoutX="214.0" layoutY="263.0" />
+      <TextField fx:id="userName_txtfld" layoutX="214.0" layoutY="215.0" />
+      <ButtonBar layoutX="113.0" layoutY="342.0" prefHeight="40.0" prefWidth="200.0" />
+      <Label layoutX="144.0" layoutY="101.0" prefHeight="79.0" prefWidth="219.0" text="Mivhanet" textFill="#e8e8e8">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="153.0" layoutY="232.0" prefHeight="27.0" prefWidth="89.0" text="User name" textFill="#fffefe">
+      <Label layoutX="113.0" layoutY="214.0" prefHeight="27.0" prefWidth="95.0" text="User name" textFill="#fffefe">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="160.0" layoutY="280.0" text="Password" textFill="WHITE">
+      <Label layoutX="120.0" layoutY="262.0" text="Password" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-    <Button fx:id="logIn_btn" layoutX="256.0" layoutY="333.0" mnemonicParsing="false" onAction="#logIn" prefHeight="40.0" prefWidth="75.0" text="Log In" />
+    <Button fx:id="logIn_btn" layoutX="216.0" layoutY="315.0" mnemonicParsing="false" onAction="#logIn" prefHeight="40.0" prefWidth="75.0" text="Log In" />
    </children>
 </AnchorPane>
