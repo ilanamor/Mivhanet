@@ -22,7 +22,7 @@ public class AddCoGUIController {
 
         String[] courses = new String[50];
         for (String c : courses) {
-            coursesList.getItems().add("cc");
+            coursesList.getItems().add(c);
         }
         //listener to course choose
         coursesList.valueProperty().addListener(new ChangeListener() {
@@ -57,7 +57,7 @@ public class AddCoGUIController {
         String courseName=coursesList.getValue().toString();
         String[] questions = new String[50];
         for (String q : questions) {
-            questionList.getItems().add("bb");
+            questionList.getItems().add(q);
         }
     }
 

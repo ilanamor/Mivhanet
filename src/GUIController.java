@@ -48,12 +48,8 @@ public class GUIController {
 
     }
     private void showAlertError(String alertMessage) {
-
         Alert alert = new Alert(Alert.AlertType.ERROR);
-
         alert.setContentText(alertMessage);
-
         alert.show();
-
     }
 }
