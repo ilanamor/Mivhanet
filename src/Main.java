@@ -1,6 +1,26 @@
-public class Main {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-    public static void main(String[] args) {
+import java.sql.SQLException;
 
+public class Main extends Application {
+
+
+        @Override
+        public void start(Stage primaryStage) throws Exception{
+            Parent root = FXMLLoader.load(getClass().getResource("AddCoGUI.fxml"));
+            primaryStage.setTitle("Mivhanet System");
+            primaryStage.setScene(new Scene(root, 500, 500));
+            primaryStage.show();
+        }
+
+
+        public static void main(String[] args) throws SQLException, ClassNotFoundException {
+            launch(args);
+        }
     }
-}
+
