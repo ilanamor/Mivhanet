@@ -20,7 +20,7 @@ public class MenuGUIController {
         stage.setTitle("Create Question");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getClass().getResource("CreateQGUI.fxml").openStream());
-        Scene scene = new Scene(root, 700, 470);
+        Scene scene = new Scene(root, 500, 500);
         stage.setScene(scene);
         //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
         //Stage stage2=(Stage)createQuestion_btn.getScene().getWindow();
@@ -34,7 +34,7 @@ public class MenuGUIController {
         stage.setTitle("Edit Question");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getClass().getResource("EditGUI.fxml").openStream());
-        Scene scene = new Scene(root, 700, 470);
+        Scene scene = new Scene(root, 500, 500);
         stage.setScene(scene);
         //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
         //Stage stage2=(Stage)createQuestion_btn.getScene().getWindow();
@@ -47,7 +47,7 @@ public class MenuGUIController {
         stage.setTitle("Add Comment To Question");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getClass().getResource("AddCoGUI.fxml").openStream());
-        Scene scene = new Scene(root, 700, 470);
+        Scene scene = new Scene(root, 500, 500);
         stage.setScene(scene);
         //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
         //Stage stage2=(Stage)createQuestion_btn.getScene().getWindow();

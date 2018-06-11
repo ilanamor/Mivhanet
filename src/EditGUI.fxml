@@ -7,26 +7,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditGUIController">
+<AnchorPane prefHeight="499.0" prefWidth="501.0" style="-fx-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4oAXWNdjAiagzNumyxF-Ip2fE6UsrVgxAKAtr7qqoQhQYwvQuw'); -fx-background-size: 500 500;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditGUIController">
    <children>
-      <ChoiceBox fx:id="coursesList" layoutX="245.0" layoutY="130.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="questionList" layoutX="245.0" layoutY="170.0" prefWidth="150.0" />
-      <Label layoutX="111.0" layoutY="169.0" prefHeight="27.0" prefWidth="135.0" text="Select Question:">
+      <ChoiceBox fx:id="coursesList" layoutX="243.0" layoutY="134.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="questionList" layoutX="243.0" layoutY="174.0" prefWidth="150.0" />
+      <Label layoutX="109.0" layoutY="173.0" prefHeight="27.0" prefWidth="110.0" text="Select Question:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="qBody_txtfld" disable="true" layoutX="238.0" layoutY="223.0" promptText="New Question Body" />
-      <Button fx:id="save_btn" disable="true" layoutX="237.0" layoutY="270.0" mnemonicParsing="false" onAction="#saveQuestionBody" prefHeight="25.0" prefWidth="150.0" text="Save Changes" />
-      <Label layoutX="138.0" layoutY="58.0" text="Edit Question Body">
+      <TextField fx:id="qBody_txtfld" disable="true" layoutX="109.0" layoutY="225.0" prefHeight="37.0" prefWidth="284.0" promptText="New Question Body" />
+      <Button fx:id="save_btn" disable="true" layoutX="176.0" layoutY="276.0" mnemonicParsing="false" onAction="#saveQuestionBody" prefHeight="25.0" prefWidth="150.0" text="Save Changes" />
+      <Label layoutX="88.0" layoutY="59.0" text="Edit Question Body" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="111.0" layoutY="129.0" prefHeight="27.0" prefWidth="118.0" text="Select Course:">
+      <Label layoutX="109.0" layoutY="133.0" prefHeight="27.0" prefWidth="96.0" text="Select Course:" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
    </children>
