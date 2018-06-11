@@ -7,30 +7,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddCoGUIController">
+<AnchorPane prefHeight="490.0" prefWidth="494.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddCoGUIController">
    <children>
-      <AnchorPane layoutX="-14.0" layoutY="-12.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4oAXWNdjAiagzNumyxF-Ip2fE6UsrVgxAKAtr7qqoQhQYwvQuw'); -fx-background-size: 500 500;">
+      <AnchorPane layoutY="-7.0" prefHeight="497.0" prefWidth="495.0" style="-fx-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4oAXWNdjAiagzNumyxF-Ip2fE6UsrVgxAKAtr7qqoQhQYwvQuw'); -fx-background-size: 500 500;">
          <children>
-            <ChoiceBox fx:id="coursesList" layoutX="227.0" layoutY="120.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="questionList" layoutX="227.0" layoutY="160.0" prefWidth="150.0" />
-            <Label layoutX="92.0" layoutY="159.0" prefHeight="27.0" prefWidth="135.0" text="Select Question:">
+            <ChoiceBox fx:id="coursesList" layoutX="223.0" layoutY="140.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="questionList" layoutX="223.0" layoutY="180.0" prefWidth="150.0" />
+            <Label layoutX="111.0" layoutY="179.0" prefHeight="27.0" prefWidth="135.0" text="Select Question:" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="comment_txtfld" disable="true" layoutX="228.0" layoutY="213.0" promptText="Comment" />
-            <Button fx:id="addComment_btn" disable="true" layoutX="227.0" layoutY="260.0" mnemonicParsing="false" onAction="#addComment" prefHeight="25.0" prefWidth="150.0" text="Add Comment" />
+            <TextField fx:id="comment_txtfld" disable="true" layoutX="224.0" layoutY="233.0" promptText="Comment" />
+            <Button fx:id="addComment_btn" disable="true" layoutX="223.0" layoutY="280.0" mnemonicParsing="false" onAction="#addComment" prefHeight="25.0" prefWidth="150.0" text="Add Comment" />
+            <Label layoutX="119.0" layoutY="142.0" prefHeight="27.0" prefWidth="118.0" text="Select Course:" textFill="#fffefe">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="55.0" text="Add Comment To Question" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="80.0" layoutY="43.0" text="Add Comment To Question">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
-      <Label layoutX="80.0" layoutY="105.0" prefHeight="27.0" prefWidth="118.0" text="Select Course:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
