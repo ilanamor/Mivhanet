@@ -33,13 +33,13 @@ public class AddCoGUIController {
         });
 
         //listener to question chooser
-        coursesList.valueProperty().addListener(new ChangeListener() {
+        questionList.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 //KARIN AND ILANA - check if possible to add comment
                 String questionName=questionList.getValue().toString();
-                boolean poosible=true;
-                if(poosible)
+                boolean posible=false;
+                if(posible)
                 {
                     comment_txtfld.setDisable(false);
                     addComment_btn.setDisable(false);
