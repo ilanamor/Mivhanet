@@ -18,8 +18,8 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="comment_txtfld" disable="true" layoutX="224.0" layoutY="233.0" promptText="Comment" />
-            <Button fx:id="addComment_btn" disable="true" layoutX="223.0" layoutY="280.0" mnemonicParsing="false" onAction="#addComment" prefHeight="25.0" prefWidth="150.0" text="Add Comment" />
+            <TextField fx:id="comment_txtfld" disable="true" layoutX="114.0" layoutY="226.0" prefHeight="53.0" prefWidth="259.0" promptText="Comment" />
+            <Button fx:id="addComment_btn" disable="true" layoutX="113.0" layoutY="299.0" mnemonicParsing="false" onAction="#addComment" prefHeight="25.0" prefWidth="259.0" text="Add Comment" />
             <Label layoutX="119.0" layoutY="142.0" prefHeight="27.0" prefWidth="118.0" text="Select Course:" textFill="#fffefe">
                <font>
                   <Font name="System Bold" size="14.0" />
