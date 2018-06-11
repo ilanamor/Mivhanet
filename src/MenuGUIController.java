@@ -22,9 +22,9 @@ public class MenuGUIController {
         Parent root = fxmlLoader.load(getClass().getResource("CreateQGUI.fxml").openStream());
         Scene scene = new Scene(root, 700, 470);
         stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
-        Stage stage2=(Stage)createQuestion_btn.getScene().getWindow();
-        stage2.close();
+        //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
+        //Stage stage2=(Stage)createQuestion_btn.getScene().getWindow();
+        //stage2.close();
         stage.show();
 
     }
@@ -36,9 +36,9 @@ public class MenuGUIController {
         Parent root = fxmlLoader.load(getClass().getResource("EditGUI.fxml").openStream());
         Scene scene = new Scene(root, 700, 470);
         stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
-        Stage stage2=(Stage)createQuestion_btn.getScene().getWindow();
-        stage2.close();
+        //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
+        //Stage stage2=(Stage)createQuestion_btn.getScene().getWindow();
+       // stage2.close();
         stage.show();
     }
 
@@ -49,9 +49,9 @@ public class MenuGUIController {
         Parent root = fxmlLoader.load(getClass().getResource("AddCoGUI.fxml").openStream());
         Scene scene = new Scene(root, 700, 470);
         stage.setScene(scene);
-        stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
-        Stage stage2=(Stage)createQuestion_btn.getScene().getWindow();
-        stage2.close();
+        //stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
+        //Stage stage2=(Stage)createQuestion_btn.getScene().getWindow();
+        //stage2.close();
         stage.show();
     }
 }
