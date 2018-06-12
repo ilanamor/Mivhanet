@@ -1,4 +1,5 @@
 public class Question {
+
     int time;
     String body;
     Answer[] possibleAnswers;

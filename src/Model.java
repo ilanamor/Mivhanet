@@ -5,17 +5,20 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class Model {
+public final class Model {
 
-    public Connection conn;
+    public static Connection conn;
 
-    public void connectToDB() throws ClassNotFoundException, SQLException {
+    public static void connectToDB() throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         conn = DriverManager.getConnection("jdbc:sqlite:Mivhanet.db");
     }
 
-    public User Login(String userName, String password) throws Exception {
+    public static User Login(String userName, String password) throws Exception {
         PreparedStatement prep = conn.prepareStatement("SELECT userName FROM users WHERE userName='" + userName + "' AND password='" + password +"'");
         ResultSet rs = prep.executeQuery();
 
@@ -31,6 +34,90 @@ public class Model {
         else {
             throw new Exception();
         }
+    }
+
+    public static List<String> getAllCourses(String UserId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select distinct c.courseName from courseStaff a join courseInSemester b on a.courseInSemesterId=b.id join courses c on b.courseId=c.courseId where a.userId='"+UserId+"'");
+        ResultSet rs = prep.executeQuery();
+        List<String> result = new ArrayList<>();
+        if (rs.next()) {
+            result.add(rs.getString("courseName"));
+        }
+        return result;
+    }
+
+    public static void addQuestion(String courseId, int time, String body, int level ) throws SQLException {
+        //get max question id
+        PreparedStatement prep = conn.prepareStatement("select max(quesId) as max from questions");
+        ResultSet rs = prep.executeQuery();
+        int maxId;
+        if (rs.next()) {
+            maxId= rs.getInt("max");
+        }
+        else
+            maxId=0;
+        maxId++;
+        //add question
+        prep = conn.prepareStatement("insert into question (quesId, courseId, time, body, level) values ('" +maxId+"','"+ courseId+"','"+ time+"','"+ body+"','"+ level+"')");
+        rs = prep.executeQuery();
+    }
+
+    public static void addAnswers(String quesId, int answerId, String[] body, int[] isTrue ) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select max(answerId) as max from answers");
+        ResultSet rs = prep.executeQuery();
+        int maxId;
+        if (rs.next()) {
+            maxId= rs.getInt("max");
+        }
+        else
+            maxId=0;
+        maxId++;
+
+        for(int i=0; i<body.length;i++){
+            prep = conn.prepareStatement("insert into answers (answerId, quesId, answer, isTrue) values ('" +maxId+"','"+ quesId+"','"+ body[i]+"','"+ isTrue[i]+"')");
+            rs = prep.executeQuery();
+            maxId++;
+        }
+    }
+
+    public static HashMap<Integer, String> getAllQuestions(String CourseId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select quesId, body from questions where courseId='"+CourseId+"'");
+        ResultSet rs = prep.executeQuery();
+        HashMap<Integer, String> result= new HashMap<Integer, String>();
+        while (rs.next()) {
+            result.put(rs.getInt("quesId"), rs.getString("body"));
+        }
+        return result;
+    }
+
+    public static void updateQuestion(String quesId, String body) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("update questions set body='"+body+"' where quesId='"+quesId+"'");
+        ResultSet rs = prep.executeQuery();
+    }
+
+    public static int checkNumOfComments(String quesId) throws SQLException {
+
+        PreparedStatement prep = conn.prepareStatement("select count(commentId) as num from comments where quesId='"+quesId+"'");
+        ResultSet rs = prep.executeQuery();
+        if(rs.next()){
+            return rs.getInt("num");
+        }
+        else return 0;
+    }
+
+    public static void addComment(String quesId, String comment) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select max(commentId) as max from comments");
+        ResultSet rs = prep.executeQuery();
+        int maxId;
+        if (rs.next()) {
+            maxId= rs.getInt("max");
+        }
+        else
+            maxId=0;
+        maxId++;
+
+         prep = conn.prepareStatement("insert into comments (commentId, quesId, text) values ('"+maxId+"','"+quesId+"','"+comment+"')");
+         rs = prep.executeQuery();
     }
 
     public CourseInSemester getCourseInSemester(String cisId){return new CourseInSemester();}

@@ -16,17 +16,18 @@ public class GUIController {
 
     public TextField userName_txtfld;
     public TextField password_txtfld;
-    public static User UserId;
+    public static User User;
+    public Model m;
 
+    public void logIn(ActionEvent actionEvent) throws Exception {
 
-    public void logIn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
-        Class.forName("org.sqlite.JDBC");
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:Mivhanet.db");
+        if(userName_txtfld.getText()=="" || password_txtfld.getText()==""){
+            showAlertError("Invalid parmeters");
+            return;
+        }
+        User = m.Login(userName_txtfld.getText(),password_txtfld.getText());
 
-        PreparedStatement prep = conn.prepareStatement("SELECT userName FROM users WHERE userName='" + userName_txtfld.getText() + "' AND password='" + password_txtfld.getText() +"'");
-        ResultSet rs = prep.executeQuery();
-
-        if (rs.next())
+        if (User != null)
         {
             Stage stage = new Stage();
             stage.setTitle("Mivhanet System");

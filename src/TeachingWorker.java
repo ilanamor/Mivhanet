@@ -1,7 +1,9 @@
 public class TeachingWorker extends User{
 
     public Question[] showCourseQuestions(String courseId){return new Question[0];}
-    public void createQuestion(String courseId, int time, int level, String quesBody, Answer[] answers){}
+    public void createQuestion(String courseId, int time, int level, String quesBody, Answer[] answers){
+
+    }
     public void editQuestionBody(String questionId, String body){}
     public void editQuestionTime(String questionId, int time){}
     public void addComment(String questionId, Question.Comment comment){}
@@ -22,5 +24,6 @@ public class TeachingWorker extends User{
     TeachingWorker(String userName, String lastName, String firstName, String ID, String address, String phoneNumber, String email, String password) {
         super(userName, lastName, firstName, ID, address, phoneNumber, email, password);
     }
+    TeachingWorker(){}
 
 }
