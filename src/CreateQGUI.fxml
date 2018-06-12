@@ -33,10 +33,6 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="52.0" layoutY="358.0" text="Add comment" textFill="#f2efef">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
       <Label layoutX="80.0" layoutY="200.0" text="Add time" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -47,7 +43,7 @@
       <TextField fx:id="answer1_fld" layoutX="152.0" layoutY="236.0" />
       <TextField fx:id="answer2_fld" layoutX="152.0" layoutY="275.0" />
       <TextField fx:id="answer3_fld" layoutX="152.0" layoutY="314.0" />
-      <TextField fx:id="comment_fld" layoutX="152.0" layoutY="355.0" />
+      <TextField fx:id="level_fld" layoutX="153.0" layoutY="355.0" />
       <ButtonBar layoutX="233.0" layoutY="392.0" prefHeight="40.0" prefWidth="119.0" />
       <Label layoutX="73.0" layoutY="40.0" text="Create New Question" textFill="WHITE">
          <font>
@@ -58,5 +54,10 @@
       <CheckBox fx:id="isTrue2" layoutX="316.0" layoutY="279.0" mnemonicParsing="false" text="Is true Answer" textFill="WHITE" />
       <CheckBox fx:id="isTrue3" layoutX="316.0" layoutY="318.0" mnemonicParsing="false" text="Is true Answer" textFill="WHITE" />
     <Button fx:id="addQuestion_fld" layoutX="152.0" layoutY="397.0" mnemonicParsing="false" onAction="#addQuestion" prefHeight="25.0" prefWidth="149.0" text="Add Question" />
+      <Label layoutX="109.0" layoutY="357.0" text="Level" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

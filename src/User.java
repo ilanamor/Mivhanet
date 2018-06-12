@@ -3,13 +3,13 @@ public abstract class User
     public String userName;
     public String lastName;
     public String firstName;
-    public String ID;
+    public int ID;
     public String address;
     public String phoneNumber;
     public String Email;
     private String password;
 
-    public User(String userName, String lastName, String firstName, String ID, String address, String phoneNumber, String email, String password) {
+    public User(String userName, String lastName, String firstName, int ID, String address, String phoneNumber, String email, String password) {
         this.userName = userName;
         this.lastName = lastName;
         this.firstName = firstName;

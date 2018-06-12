@@ -16,19 +16,16 @@ public class GUIController {
 
     public TextField userName_txtfld;
     public TextField password_txtfld;
-    public static User User;
-    public Model m;
 
-    public void logIn(ActionEvent actionEvent) throws Exception {
+    public void logIn(ActionEvent actionEvent) {
+        try {
+            if (userName_txtfld.getText() == "" || password_txtfld.getText() == "") {
+                showAlertError("Invalid parmeters");
+                return;
+            }
 
-        if(userName_txtfld.getText()=="" || password_txtfld.getText()==""){
-            showAlertError("Invalid parmeters");
-            return;
-        }
-        User = m.Login(userName_txtfld.getText(),password_txtfld.getText());
-
-        if (User != null)
-        {
+            Model.connectToDB();
+            User user = Model.Login(userName_txtfld.getText(), password_txtfld.getText());
             Stage stage = new Stage();
             stage.setTitle("Mivhanet System");
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -36,16 +33,16 @@ public class GUIController {
             Scene scene = new Scene(root, 500, 500);
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL); //Lock the window until it closes
-            Stage stage2=(Stage)userName_txtfld.getScene().getWindow();
-            MenuGUIController.user=userName_txtfld.getText();
+            Stage stage2 = (Stage) userName_txtfld.getScene().getWindow();
+            MenuGUIController.user = user;
             stage2.close();
             stage.show();
-        }
-        else
-        {
-            showAlertError("Invalid parmeters");
-        }
 
+        }
+        catch (Exception e){
+            showAlertError("Invalid parmeters");
+            return;
+        }
 
     }
     private void showAlertError(String alertMessage) {

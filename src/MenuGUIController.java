@@ -12,7 +12,7 @@ import java.io.IOException;
 public class MenuGUIController {
 
     public Button createQuestion_btn;
-    public static String user;
+    public static User user;
 
     public void createQuestion(ActionEvent actionEvent) throws IOException {
 

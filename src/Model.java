@@ -19,16 +19,16 @@ public final class Model {
     }
 
     public static User Login(String userName, String password) throws Exception {
-        PreparedStatement prep = conn.prepareStatement("SELECT userName FROM users WHERE userName='" + userName + "' AND password='" + password +"'");
+        PreparedStatement prep = conn.prepareStatement("SELECT * FROM users WHERE userName='" + userName + "' AND password='" + password +"'");
         ResultSet rs = prep.executeQuery();
 
         if (rs.next()) {
             String type = rs.getString("job");
-            if(type=="secretary"){
-                return new Secretariat(rs.getString("userName"),rs.getString("lName"),rs.getString("fName"),rs.getString("userId"), rs.getString("address"),rs.getString("phone"),rs.getString("email") ,rs.getString("password"));
+            if(type.equals("secretary")){
+                return new Secretariat(rs.getString("userName"),rs.getString("lName"),rs.getString("fName"),rs.getInt("userId"), rs.getString("address"),rs.getString("phone"),rs.getString("email") ,rs.getString("password"));
             }
             else{
-                return new TeachingWorker(rs.getString("userName"),rs.getString("lName"),rs.getString("fName"),rs.getString("userId"), rs.getString("address"),rs.getString("phone"),rs.getString("email") ,rs.getString("password"));
+                return new TeachingWorker(rs.getString("userName"),rs.getString("lName"),rs.getString("fName"),rs.getInt("userId"), rs.getString("address"),rs.getString("phone"),rs.getString("email") ,rs.getString("password"));
             }
         }
         else {
@@ -36,17 +36,17 @@ public final class Model {
         }
     }
 
-    public static List<String> getAllCourses(String UserId) throws SQLException {
-        PreparedStatement prep = conn.prepareStatement("select distinct c.courseName from courseStaff a join courseInSemester b on a.courseInSemesterId=b.id join courses c on b.courseId=c.courseId where a.userId='"+UserId+"'");
+    public static HashMap<String,Integer> getAllCourses(int UserId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select distinct c.courseName, c.courseId from courseStaff a join courseInSemester b on a.courseInSemesterId=b.id join courses c on b.courseId=c.courseId where a.userId='"+UserId+"'");
         ResultSet rs = prep.executeQuery();
-        List<String> result = new ArrayList<>();
-        if (rs.next()) {
-            result.add(rs.getString("courseName"));
+        HashMap<String,Integer> result = new HashMap<String,Integer>();
+        while (rs.next()) {
+            result.put(rs.getString("courseName"),rs.getInt("courseId"));
         }
         return result;
     }
 
-    public static void addQuestion(String courseId, int time, String body, int level ) throws SQLException {
+    public static int addQuestion(int courseId, int time, String body, int level ) throws SQLException {
         //get max question id
         PreparedStatement prep = conn.prepareStatement("select max(quesId) as max from questions");
         ResultSet rs = prep.executeQuery();
@@ -58,11 +58,13 @@ public final class Model {
             maxId=0;
         maxId++;
         //add question
-        prep = conn.prepareStatement("insert into question (quesId, courseId, time, body, level) values ('" +maxId+"','"+ courseId+"','"+ time+"','"+ body+"','"+ level+"')");
-        rs = prep.executeQuery();
+        prep = conn.prepareStatement("insert into questions (quesId, courseId, time, body, level) values ('" +maxId+"','"+ courseId+"','"+ time+"','"+ body+"','"+ level+"')");
+        prep.executeUpdate();
+
+        return maxId;
     }
 
-    public static void addAnswers(String quesId, int answerId, String[] body, int[] isTrue ) throws SQLException {
+    public static void addAnswers(int quesId, String[] body, boolean[] isTrue ) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select max(answerId) as max from answers");
         ResultSet rs = prep.executeQuery();
         int maxId;
@@ -75,12 +77,12 @@ public final class Model {
 
         for(int i=0; i<body.length;i++){
             prep = conn.prepareStatement("insert into answers (answerId, quesId, answer, isTrue) values ('" +maxId+"','"+ quesId+"','"+ body[i]+"','"+ isTrue[i]+"')");
-            rs = prep.executeQuery();
+            prep.executeUpdate();
             maxId++;
         }
     }
 
-    public static HashMap<Integer, String> getAllQuestions(String CourseId) throws SQLException {
+    public static HashMap<Integer, String> getAllQuestions(int CourseId) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select quesId, body from questions where courseId='"+CourseId+"'");
         ResultSet rs = prep.executeQuery();
         HashMap<Integer, String> result= new HashMap<Integer, String>();
@@ -92,7 +94,7 @@ public final class Model {
 
     public static void updateQuestion(String quesId, String body) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("update questions set body='"+body+"' where quesId='"+quesId+"'");
-        ResultSet rs = prep.executeQuery();
+        prep.executeUpdate();
     }
 
     public static int checkNumOfComments(String quesId) throws SQLException {
@@ -117,7 +119,7 @@ public final class Model {
         maxId++;
 
          prep = conn.prepareStatement("insert into comments (commentId, quesId, text) values ('"+maxId+"','"+quesId+"','"+comment+"')");
-         rs = prep.executeQuery();
+         prep.executeUpdate();
     }
 
     public CourseInSemester getCourseInSemester(String cisId){return new CourseInSemester();}

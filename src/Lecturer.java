@@ -1,6 +1,6 @@
 public class Lecturer extends TeachingWorker {
 
-    Lecturer(String userName, String lastName, String firstName, String ID, String address, String phoneNumber, String email, String password) {
+    Lecturer(String userName, String lastName, String firstName, int ID, String address, String phoneNumber, String email, String password) {
         super(userName, lastName, firstName, ID, address, phoneNumber, email, password);
     }
 
