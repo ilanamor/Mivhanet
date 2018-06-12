@@ -12,4 +12,8 @@ public class Secretariat extends User {
 
     public boolean CheckIfTermExist(String courseInSemesterId, Date date, char term){return true;}
     public Course ShowCourse(String courseId){return new Course();}
+
+    public Secretariat(String userName, String lastName, String firstName, String ID, String address, String phoneNumber, String email, String password){
+        super( userName,  lastName,  firstName,  ID,  address,  phoneNumber,  email,  password);
+    }
 }

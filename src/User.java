@@ -19,4 +19,6 @@ public abstract class User
         Email = email;
         this.password = password;
     }
+
+    public User(){}
 }

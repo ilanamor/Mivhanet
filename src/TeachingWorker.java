@@ -1,4 +1,4 @@
-public abstract class TeachingWorker extends User{
+public class TeachingWorker extends User{
 
     public Question[] showCourseQuestions(String courseId){return new Question[0];}
     public void createQuestion(String courseId, int time, int level, String quesBody, Answer[] answers){}
@@ -18,6 +18,9 @@ public abstract class TeachingWorker extends User{
     public void	createAnswer(String answerBody, boolean isTrue){}
     public Exam ShowExam(String examId){return new Exam();}
     public int checkNumOfComments(String quesId){return 0;}
-    TeachingWorker(){}
+
+    TeachingWorker(String userName, String lastName, String firstName, String ID, String address, String phoneNumber, String email, String password) {
+        super(userName, lastName, firstName, ID, address, phoneNumber, email, password);
+    }
 
 }
