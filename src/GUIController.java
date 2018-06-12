@@ -16,14 +16,14 @@ public class GUIController {
 
     public TextField userName_txtfld;
     public TextField password_txtfld;
-
+    public static User UserId;
 
 
     public void logIn(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
         Class.forName("org.sqlite.JDBC");
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:movies.db");
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:Mivhanet.db");
 
-        PreparedStatement prep = conn.prepareStatement("SELECT userName FROM Users WHERE userName=" + userName_txtfld.getText() + " AND password=" + password_txtfld.getText());
+        PreparedStatement prep = conn.prepareStatement("SELECT userName FROM users WHERE userName='" + userName_txtfld.getText() + "' AND password='" + password_txtfld.getText() +"'");
         ResultSet rs = prep.executeQuery();
 
         if (rs.next())
