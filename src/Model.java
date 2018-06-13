@@ -105,7 +105,7 @@ public final class Model {
         return result;
     }
 
-    public static void updateQuestion(String quesId, String body) throws SQLException {
+    public static void updateQuestion(int quesId, String body) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("update questions set body='"+body+"' where quesId='"+quesId+"'");
         prep.executeUpdate();
     }
