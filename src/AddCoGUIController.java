@@ -102,9 +102,13 @@ public class AddCoGUIController {
     }
 
     public void addComment(ActionEvent actionEvent) throws SQLException {
+        if(comment_txtfld.getText().equals(""))
+            showAlertError("you must write a comment!");
         //KARIN AND ILANA - Crate comment and save in data base
-        currQuesToAdd.addComment(new Comment(comment_txtfld.getText().toString(),Model.addComment(currQuesToAdd.QuestionId,comment_txtfld.getText().toString())));
-        showAlert("Comment added succesfully!");
+        else {
+            currQuesToAdd.addComment(new Comment(comment_txtfld.getText().toString(), Model.addComment(currQuesToAdd.QuestionId, comment_txtfld.getText().toString())));
+            showAlert("Comment added succesfully!");
+        }
     }
 }
 
