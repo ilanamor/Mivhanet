@@ -36,4 +36,12 @@ public class Course {
         }
         return null;
     }
+
+    public Question getQuestionbyName(String quesName){
+        for(Question q:questionBank){
+            if(q.body==quesName)
+                return q;
+        }
+        return null;
+    }
 }
