@@ -99,6 +99,7 @@ public final class Model {
         while (rs.next()) {
             Question q=new Question(rs.getInt("quesId"),rs.getInt("time"),rs.getString("body"),rs.getInt("level"), rs.getInt("writerId"));
             q.setPossibleAnswers(getAnswers(rs.getInt("quesId")));
+            q.setComments(getComments(rs.getInt("quesId")));
             result.add(q);
         }
         return result;
@@ -173,7 +174,7 @@ public final class Model {
         return null;
     }
 
-    public List<Comment> getComments(int quesId) throws SQLException {
+    public static List<Comment> getComments(int quesId) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select * from comments WHERE quesId='" + quesId + "'");
         ResultSet rs = prep.executeQuery();
         List<Comment> result = new ArrayList<Comment>();
