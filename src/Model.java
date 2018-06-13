@@ -93,11 +93,13 @@ public final class Model {
     }
 
     public static List<Question> getListOfQuestions(int CourseId) throws SQLException {
-        PreparedStatement prep = conn.prepareStatement("select quesId, body from questions where courseId='"+CourseId+"'");
+        PreparedStatement prep = conn.prepareStatement("select * from questions where courseId='"+CourseId+"'");
         ResultSet rs = prep.executeQuery();
         List<Question> result= new ArrayList<Question>();
         while (rs.next()) {
-            result.add(getQuestion(rs.getInt("quesId")));
+            Question q=new Question(rs.getInt("quesId"),rs.getInt("time"),rs.getString("body"),rs.getInt("level"), rs.getInt("writerId"));
+            q.setPossibleAnswers(getAnswers(rs.getInt("quesId")));
+            result.add(q);
         }
         return result;
     }
@@ -146,14 +148,14 @@ public final class Model {
     }
 
     public static Question getQuestion(int quesId) throws SQLException {
-        PreparedStatement prep = conn.prepareStatement("select a.* from questions  WHERE a.quesId='" + quesId +"'");
+        PreparedStatement prep = conn.prepareStatement("select * from questions WHERE quesId='" + quesId +"'");
         ResultSet rs = prep.executeQuery();
         return new Question(quesId,rs.getInt("time"),rs.getString("body"),rs.getInt("level"), rs.getInt("writerId"));
     }
 
 
-    public List<Answer> getAnswers(int quesId) throws SQLException {
-        PreparedStatement prep = conn.prepareStatement("select * from answres WHERE a.quesId='" + quesId + "'");
+    public static List<Answer> getAnswers(int quesId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select * from answers WHERE quesId='" + quesId + "'");
         ResultSet rs = prep.executeQuery();
         List<Answer> result = new ArrayList<Answer>();
         while (rs.next()) {
@@ -163,7 +165,7 @@ public final class Model {
     }
 
     public Answer getAnswer(int answerId) throws SQLException {
-        PreparedStatement prep = conn.prepareStatement("select * from answres WHERE a.answerId='" + answerId + "'");
+        PreparedStatement prep = conn.prepareStatement("select * from answers WHERE answerId='" + answerId + "'");
         ResultSet rs = prep.executeQuery();
         if (rs.next()) {
             return new Answer(rs.getString("answer"), rs.getBoolean("isTrue"), rs.getInt("quesId"), answerId);
@@ -172,7 +174,7 @@ public final class Model {
     }
 
     public List<Comment> getComments(int quesId) throws SQLException {
-        PreparedStatement prep = conn.prepareStatement("select * from comments WHERE a.quesId='" + quesId + "'");
+        PreparedStatement prep = conn.prepareStatement("select * from comments WHERE quesId='" + quesId + "'");
         ResultSet rs = prep.executeQuery();
         List<Comment> result = new ArrayList<Comment>();
         while (rs.next()) {
