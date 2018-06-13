@@ -5,16 +5,19 @@ public class Question {
     Answer[] possibleAnswers;
     Comment[] comments;
     int level;
-    String writerId;
-    String QuestionId;
+    int writerId;
+    int QuestionId;
 
-    public class Comment{
-        String text;
+    public Question(int questionId, int time, String body, int level, int writerId) {
+        this.time = time;
+        this.body = body;
+        this.level = level;
+        this.writerId = writerId;
+        QuestionId = questionId;
     }
 
-    Question(String body, int time, int level){}
     Question(){}
-    public String getWriterId(){return writerId;}
+    public int getWriterId(){return writerId;}
     public void setBody(String body){}
     public void addAnswer(Answer a){}
     public int getCommentsNum(){return comments.length;}

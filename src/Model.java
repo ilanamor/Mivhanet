@@ -126,9 +126,48 @@ public final class Model {
     public Exam getExam(String examId){return new Exam();}
     public Student getStudent(String examId){return new Student();}
     public Score getScore(String examId, String quesId){return new Score();}
-    public Course getCourse(String courseId){return new Course();}
-    public Question getQuestion(String quesId){return new Question();}
-    public Answer getAnswer(String answerId){return new Answer();}
+
+    public Course getCourse(String courseId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select * from courses WHERE courseId='" + courseId +"'");
+        ResultSet rs = prep.executeQuery();
+        return new Course(rs.getInt("courseId"),rs.getString("courseName"));
+    }
+
+    public Question getQuestion(int quesId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select a.*, b.userId from questions a join courseStaffActions b on a.quesId=b.quesId WHERE a.quesId='" + quesId +"' and b.action='write'");
+        ResultSet rs = prep.executeQuery();
+        return new Question(quesId,rs.getInt("time"),rs.getString("body"),rs.getInt("level"), rs.getInt("writerId"));
+    }
+
+    public List<Answer> getAnswers(int quesId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select * from answres WHERE a.quesId='" + quesId + "'");
+        ResultSet rs = prep.executeQuery();
+        List<Answer> result = new ArrayList<Answer>();
+        while (rs.next()) {
+            result.add(new Answer(rs.getString("answer"), rs.getBoolean("isTrue"), quesId, rs.getInt("answerId")));
+        }
+        return result;
+    }
+
+    public Answer getAnswer(int answerId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select * from answres WHERE a.answerId='" + answerId + "'");
+        ResultSet rs = prep.executeQuery();
+        if (rs.next()) {
+            return new Answer(rs.getString("answer"), rs.getBoolean("isTrue"), rs.getInt("quesId"), answerId);
+        }
+        return null;
+    }
+
+    public List<Comment> getComments(int quesId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select * from comments WHERE a.quesId='" + quesId + "'");
+        ResultSet rs = prep.executeQuery();
+        List<Comment> result = new ArrayList<Comment>();
+        while (rs.next()) {
+            result.add(new Comment(rs.getString("text"),rs.getInt("commentId")));
+        }
+        return result;
+    }
+
     public Term getTerm(String termId){return new Term();}
     public Semester getSemester(String SemesterId){return new Semester();}
     public TeachingWorker getUser(String userId){return new Lecturer();}
