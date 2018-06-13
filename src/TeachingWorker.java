@@ -7,6 +7,7 @@ public class TeachingWorker extends User{
     public void editQuestionBody(String questionId, String body){}
     public void editQuestionTime(String questionId, int time){}
     public void addComment(String questionId, Comment comment){}
+
     private void changePassword(String newPass){}
     public StudentAnswers[] getExamGrades(String courseInSemesterId, String ExamId){return new StudentAnswers[0];}
     public void insertStudentAnswers(StudentAnswers[] answers, String examId){}
