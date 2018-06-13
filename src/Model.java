@@ -120,7 +120,7 @@ public final class Model {
         else return 0;
     }
 
-    public static void addComment(String quesId, String comment) throws SQLException {
+    public static int addComment(int quesId, String comment) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select max(commentId) as max from comments");
         ResultSet rs = prep.executeQuery();
         int maxId;
@@ -133,6 +133,7 @@ public final class Model {
 
          prep = conn.prepareStatement("insert into comments (commentId, quesId, text) values ('"+maxId+"','"+quesId+"','"+comment+"')");
          prep.executeUpdate();
+         return maxId;
     }
 
     public CourseInSemester getCourseInSemester(String cisId){return new CourseInSemester();}

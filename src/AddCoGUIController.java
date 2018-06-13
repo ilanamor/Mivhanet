@@ -21,6 +21,7 @@ public class AddCoGUIController {
     private HashMap<String,Integer> courses;
     Course currCourse;
     List<Question> currQuestions;
+    Question currQuesToAdd;
 
 
 
@@ -56,11 +57,13 @@ public class AddCoGUIController {
         questionList.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                boolean posible=false;
                 //KARIN AND ILANA - check if possible to add comment
                 String questionName=questionList.getValue().toString();
-                if(currCourse.getQuestionbyName(questionName).comments.size()<10)
-               // boolean posible=false;
-                //if(posible)
+                currQuesToAdd=(currCourse.getQuestionbyName(questionName));
+                if(currQuesToAdd.comments.size()<10)
+                    posible=true;
+                if(posible)
                 {
                     comment_txtfld.setDisable(false);
                     addComment_btn.setDisable(false);
@@ -92,9 +95,16 @@ public class AddCoGUIController {
         alert.setContentText(alertMessage);
         alert.show();
     }
+    private void showAlert(String alertMessage) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(alertMessage);
+        alert.show();
+    }
 
-    public void addComment(ActionEvent actionEvent) {
+    public void addComment(ActionEvent actionEvent) throws SQLException {
         //KARIN AND ILANA - Crate comment and save in data base
+        currQuesToAdd.addComment(new Comment(comment_txtfld.getText().toString(),Model.addComment(currQuesToAdd.QuestionId,comment_txtfld.getText().toString())));
+        showAlert("Comment added succesfully!");
     }
 }
 
