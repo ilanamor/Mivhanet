@@ -21,7 +21,19 @@ public class Course {
         questionBank.add(q);
     }
 
+    public List<Question> getQuestionBank() {
+        return questionBank;
+    }
+
     public void setQuestionBank(List<Question> questionBank) {
         this.questionBank = questionBank;
+    }
+
+    public Question getQuestion(int quesId){
+        for(Question q:questionBank){
+            if(q.QuestionId==quesId)
+                return q;
+        }
+        return null;
     }
 }
