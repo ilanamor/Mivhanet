@@ -136,11 +136,6 @@ public final class Model {
          return maxId;
     }
 
-    public CourseInSemester getCourseInSemester(String cisId){return new CourseInSemester();}
-    public Exam getExam(String examId){return new Exam();}
-    public Student getStudent(String examId){return new Student();}
-    public Score getScore(String examId, String quesId){return new Score();}
-
     public static Course getCourse(int courseId) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select * from courses WHERE courseId='" + courseId +"'");
         ResultSet rs = prep.executeQuery();
@@ -155,7 +150,6 @@ public final class Model {
         return new Question(quesId,rs.getInt("time"),rs.getString("body"),rs.getInt("level"), rs.getInt("writerId"));
     }
 
-
     public static List<Answer> getAnswers(int quesId) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select * from answers WHERE quesId='" + quesId + "'");
         ResultSet rs = prep.executeQuery();
@@ -166,7 +160,7 @@ public final class Model {
         return result;
     }
 
-    public Answer getAnswer(int answerId) throws SQLException {
+    public static Answer getAnswer(int answerId) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select * from answers WHERE answerId='" + answerId + "'");
         ResultSet rs = prep.executeQuery();
         if (rs.next()) {
@@ -185,6 +179,10 @@ public final class Model {
         return result;
     }
 
+    public CourseInSemester getCourseInSemester(String cisId){return new CourseInSemester();}
+    public Exam getExam(String examId){return new Exam();}
+    public Student getStudent(String examId){return new Student();}
+    public Score getScore(String examId, String quesId){return new Score();}
     public Term getTerm(String termId){return new Term();}
     public Semester getSemester(String SemesterId){return new Semester();}
     public TeachingWorker getUser(String userId){return new Lecturer();}

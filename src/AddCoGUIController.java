@@ -57,13 +57,7 @@ public class AddCoGUIController {
         questionList.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                boolean posible=false;
-                //KARIN AND ILANA - check if possible to add comment
-                String questionName=questionList.getValue().toString();
-                currQuesToAdd=(currCourse.getQuestionbyName(questionName));
-                if(currQuesToAdd.comments.size()<10)
-                    posible=true;
-                if(posible)
+                if(CheckNumberOfComments())
                 {
                     comment_txtfld.setDisable(false);
                     addComment_btn.setDisable(false);
@@ -74,6 +68,14 @@ public class AddCoGUIController {
                 }
             }
         });
+    }
+
+    public boolean CheckNumberOfComments(){
+        String questionName=questionList.getValue().toString();
+        currQuesToAdd=(currCourse.getQuestionbyName(questionName));
+        if(currQuesToAdd.comments.size()<10)
+            return true;
+        return false;
     }
 
     private void showQuestions() {

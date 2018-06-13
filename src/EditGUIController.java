@@ -23,7 +23,6 @@ public class EditGUIController {
     public void initialize() throws SQLException {
         //KARIN AND ILANA - find list of courses by user (saved gstatic in MenueGUIController) - into courses }
 
-
         courses= Model.getAllCourses(MenuGUIController.user.ID);
         for (String c : courses.keySet()) {
             coursesList.getItems().add(c);
@@ -49,19 +48,22 @@ public class EditGUIController {
         questionList.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                //KARIN AND ILANA - check if possible to change question
-                String questionName=questionList.getValue().toString();
-                if(!questionName.equals("")) {
-                    Question q= currentCourse.getQuestionbyName(questionName);
-                    if (q.writerId == MenuGUIController.user.ID) {
-                        qBody_txtfld.setDisable(false);
-                        save_btn.setDisable(false);
-                    } else {
-                        showAlertError("Edit Question Not Possible");
-                    }
-                }
+                CheckEditPermission();
             }
         });
+    }
+
+    public void CheckEditPermission(){
+        String questionName=questionList.getValue().toString();
+        if(!questionName.equals("")) {
+            Question q= currentCourse.getQuestionbyName(questionName);
+            if (q.writerId == MenuGUIController.user.ID) {
+                qBody_txtfld.setDisable(false);
+                save_btn.setDisable(false);
+            } else {
+                showAlertError("Edit Question Not Possible");
+            }
+        }
     }
 
     private void showQuestions() throws SQLException {
@@ -94,6 +96,7 @@ public class EditGUIController {
         }
         else {
             Model.updateQuestion(currentCourse.getQuestionbyName(questionList.getValue().toString()).QuestionId, newQsBody);
+            currentCourse.getQuestionbyName(questionList.getValue().toString()).body=newQsBody;
             showAlert("Question saved succesfully!");
         }
 

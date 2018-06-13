@@ -9,14 +9,14 @@ public class Course {
         this.name = name;
         this.courseId = courseId;
     }
+    public Course(){}
 
     public int getQuestionBankCount() {
         return questionBank.size();
     }
 
-    public Course(){}
-
     public List<Question> getCourseQuestoins(){return questionBank;}
+
     public void addQuestionToCourse(Question q){
         questionBank.add(q);
     }
