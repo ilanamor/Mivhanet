@@ -1,9 +1,16 @@
+import java.util.List;
+
 public class Question {
 
     int time;
     String body;
-    Answer[] possibleAnswers;
+    List<Answer> possibleAnswers;
     Comment[] comments;
+
+    public void setPossibleAnswers(List<Answer> possibleAnswers) {
+        this.possibleAnswers = possibleAnswers;
+    }
+
     int level;
     int writerId;
     int QuestionId;

@@ -44,7 +44,9 @@ public class CreateQGUIController{
         //ILANA KARIN The system saves the answers to the question
         String courseName=chooseCourse_box.getValue().toString();
         int courseId=courses.get(courseName);
-        int quesId=Model.addQuestion(courseId, Integer.parseInt(time_fld.getText()),qustionBodt_fld.getText(), Integer.parseInt(level_fld.getText()) );
+        Course course = Model.getCourse(courseId);
+        int quesId=Model.addQuestion(courseId, Integer.parseInt(time_fld.getText()),qustionBodt_fld.getText(), Integer.parseInt(level_fld.getText()),MenuGUIController.user.ID );
+        course.addQuestionToCourse(Model.getQuestion(quesId));
 
         //KARIN AND ILANA - The question information is stored in the current course - also check that at least one answer is true (checkbox)
         if(!isTrue1.isSelected() && !isTrue2.isSelected() && !isTrue3.isSelected() ){
@@ -56,11 +58,17 @@ public class CreateQGUIController{
             String[] answers={answer1_fld.getText(),answer2_fld.getText()};
             boolean[] isTrue ={isTrue1.isSelected(),isTrue2.isSelected()};
             Model.addAnswers(quesId,answers,isTrue);
+            for(int i=0; i<course.getQuestionBankCount(); i++){
+                
+            }
+            showAlert("Question added succesfully");
+
         }
         else{
             String[] answers={answer1_fld.getText(),answer2_fld.getText(),answer3_fld.getText()};
             boolean[] isTrue ={isTrue1.isSelected(),isTrue2.isSelected(),isTrue3.isSelected()};
             Model.addAnswers(quesId,answers,isTrue);
+            showAlert("Question added succesfully");
         }
 
     }
@@ -68,6 +76,12 @@ public class CreateQGUIController{
 
     private void showAlertError(String alertMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(alertMessage);
+        alert.show();
+    }
+
+    private void showAlert(String alertMessage) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText(alertMessage);
         alert.show();
     }

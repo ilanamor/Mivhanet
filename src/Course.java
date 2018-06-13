@@ -1,6 +1,8 @@
+import java.util.List;
+
 public class Course {
     String name;
-    Question[] questionBank;
+    List<Question> questionBank;
     int courseId;
 
     public Course(int courseId, String name) {
@@ -8,9 +10,18 @@ public class Course {
         this.courseId = courseId;
     }
 
+    public int getQuestionBankCount() {
+        return questionBank.size();
+    }
+
     public Course(){}
 
-    public Question[] getCourseQuestoins(){return questionBank;}
-    public void addQuestionToCourse(Question q){}
+    public List<Question> getCourseQuestoins(){return questionBank;}
+    public void addQuestionToCourse(Question q){
+        questionBank.add(q);
+    }
 
+    public void setQuestionBank(List<Question> questionBank) {
+        this.questionBank = questionBank;
+    }
 }

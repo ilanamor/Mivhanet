@@ -46,7 +46,7 @@ public final class Model {
         return result;
     }
 
-    public static int addQuestion(int courseId, int time, String body, int level ) throws SQLException {
+    public static int addQuestion(int courseId, int time, String body, int level, int writerId ) throws SQLException {
         //get max question id
         PreparedStatement prep = conn.prepareStatement("select max(quesId) as max from questions");
         ResultSet rs = prep.executeQuery();
@@ -58,7 +58,7 @@ public final class Model {
             maxId=0;
         maxId++;
         //add question
-        prep = conn.prepareStatement("insert into questions (quesId, courseId, time, body, level) values ('" +maxId+"','"+ courseId+"','"+ time+"','"+ body+"','"+ level+"')");
+        prep = conn.prepareStatement("insert into questions (quesId, courseId, time, body, level, writerId) values ('" +maxId+"','"+ courseId+"','"+ time+"','"+ body+"','"+ level+"','"+writerId+"')");
         prep.executeUpdate();
 
         return maxId;
@@ -88,6 +88,16 @@ public final class Model {
         HashMap<Integer, String> result= new HashMap<Integer, String>();
         while (rs.next()) {
             result.put(rs.getInt("quesId"), rs.getString("body"));
+        }
+        return result;
+    }
+
+    public static List<Question> getListOfQuestions(int CourseId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select quesId, body from questions where courseId='"+CourseId+"'");
+        ResultSet rs = prep.executeQuery();
+        List<Question> result= new ArrayList<Question>();
+        while (rs.next()) {
+            result.add(getQuestion(rs.getInt("quesId")));
         }
         return result;
     }
@@ -127,17 +137,20 @@ public final class Model {
     public Student getStudent(String examId){return new Student();}
     public Score getScore(String examId, String quesId){return new Score();}
 
-    public Course getCourse(String courseId) throws SQLException {
+    public static Course getCourse(int courseId) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select * from courses WHERE courseId='" + courseId +"'");
         ResultSet rs = prep.executeQuery();
-        return new Course(rs.getInt("courseId"),rs.getString("courseName"));
+        Course c= new Course(rs.getInt("courseId"),rs.getString("courseName"));
+        c.setQuestionBank(getListOfQuestions(courseId));
+        return c;
     }
 
-    public Question getQuestion(int quesId) throws SQLException {
-        PreparedStatement prep = conn.prepareStatement("select a.*, b.userId from questions a join courseStaffActions b on a.quesId=b.quesId WHERE a.quesId='" + quesId +"' and b.action='write'");
+    public static Question getQuestion(int quesId) throws SQLException {
+        PreparedStatement prep = conn.prepareStatement("select a.* from questions  WHERE a.quesId='" + quesId +"'");
         ResultSet rs = prep.executeQuery();
         return new Question(quesId,rs.getInt("time"),rs.getString("body"),rs.getInt("level"), rs.getInt("writerId"));
     }
+
 
     public List<Answer> getAnswers(int quesId) throws SQLException {
         PreparedStatement prep = conn.prepareStatement("select * from answres WHERE a.quesId='" + quesId + "'");
