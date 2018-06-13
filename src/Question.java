@@ -5,7 +5,12 @@ public class Question {
     int time;
     String body;
     List<Answer> possibleAnswers;
-    Comment[] comments;
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    List<Comment> comments;
 
     public void setPossibleAnswers(List<Answer> possibleAnswers) {
         this.possibleAnswers = possibleAnswers;
@@ -27,7 +32,7 @@ public class Question {
     public int getWriterId(){return writerId;}
     public void setBody(String body){}
     public void addAnswer(Answer a){}
-    public int getCommentsNum(){return comments.length;}
+    public int getCommentsNum(){return comments.size();}
     public void addComment(Comment c){}
 
 }
