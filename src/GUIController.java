@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -15,7 +16,7 @@ import java.sql.*;
 public class GUIController {
 
     public TextField userName_txtfld;
-    public TextField password_txtfld;
+    public PasswordField password_txtfld;
 
     public void logIn(ActionEvent actionEvent) {
         try {

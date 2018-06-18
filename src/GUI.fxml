@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -10,7 +11,6 @@
 <AnchorPane prefHeight="499.0" prefWidth="500.0" style="-fx-background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy4oAXWNdjAiagzNumyxF-Ip2fE6UsrVgxAKAtr7qqoQhQYwvQuw'); -fx-background-size: 500 500;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIController">
    <children>
       <ButtonBar layoutX="94.0" layoutY="134.0" prefHeight="40.0" prefWidth="200.0" />
-      <TextField fx:id="password_txtfld" layoutX="214.0" layoutY="250.0" />
       <TextField fx:id="userName_txtfld" layoutX="214.0" layoutY="202.0" />
       <ButtonBar layoutX="113.0" layoutY="342.0" prefHeight="40.0" prefWidth="200.0" />
       <Label layoutX="113.0" layoutY="201.0" prefHeight="27.0" prefWidth="95.0" text="User name" textFill="#fffefe">
@@ -29,5 +29,6 @@
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
+      <PasswordField fx:id="password_txtfld" layoutX="214.0" layoutY="250.0" />
    </children>
 </AnchorPane>
