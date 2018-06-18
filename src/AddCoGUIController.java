@@ -24,19 +24,9 @@ public class AddCoGUIController {
     Question currQuesToAdd;
 
 
-
-    /* public void initialize() throws SQLException {
-         //KARIN AND ILANA - The system retrieves user information and courses in which it is a team member - Done
-         courses= Model.getAllCourses(MenuGUIController.user.ID);
-         for (String str:courses.keySet()) {
-             coursesList.getItems().add(str);
-         }
-     }*/
     @FXML
     public void initialize() throws SQLException {
-        //KARIN AND ILANA - find list of courses by user (saved gstatic in MenueGUIController) - into courses }
         courses= Model.getAllCourses(MenuGUIController.user.ID);
-        //String[] courses = new String[50];
         for (String c : courses.keySet()) {
             coursesList.getItems().add(c);
         }
@@ -48,7 +38,6 @@ public class AddCoGUIController {
 
                     showQuestions();
                 } catch (Exception e) {
-                    // e.printStackTrace();
                 }
             }
         });
@@ -79,7 +68,6 @@ public class AddCoGUIController {
     }
 
     private void showQuestions() {
-        //KARIN AND ILANA - find list of Question by course - into questions }
         try {
             String courseName = coursesList.getValue().toString();
             int courseId = courses.get(courseName);
@@ -106,7 +94,6 @@ public class AddCoGUIController {
     public void addComment(ActionEvent actionEvent) throws SQLException {
         if(comment_txtfld.getText().equals(""))
             showAlertError("you must write a comment!");
-        //KARIN AND ILANA - Crate comment and save in data base
         else {
             currQuesToAdd.addComment(new Comment(comment_txtfld.getText().toString(), Model.addComment(currQuesToAdd.QuestionId, comment_txtfld.getText().toString())));
             showAlert("Comment added succesfully!");

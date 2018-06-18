@@ -24,7 +24,6 @@ public class CreateQGUIController{
 
     @FXML
     public void initialize() throws SQLException {
-        //KARIN AND ILANA - The system retrieves user information and courses in which it is a team member - Done
         courses= Model.getAllCourses(MenuGUIController.user.ID);
         for (String str:courses.keySet()) {
             chooseCourse_box.getItems().add(str);
@@ -53,7 +52,7 @@ public class CreateQGUIController{
             return;
         }
 
-        //ILANA KARIN The system saves the answers to the question
+
         String courseName=chooseCourse_box.getValue().toString();
         int courseId=courses.get(courseName);
         Course course = Model.getCourse(courseId);
@@ -79,7 +78,6 @@ public class CreateQGUIController{
         }
 
     }
-
 
     private void showAlertError(String alertMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

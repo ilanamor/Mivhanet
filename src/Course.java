@@ -11,9 +11,6 @@ public class Course {
     }
     public Course(){}
 
-    public int getQuestionBankCount() {
-        return questionBank.size();
-    }
 
     public List<Question> getCourseQuestoins(){return questionBank;}
 

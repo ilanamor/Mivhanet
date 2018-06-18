@@ -21,8 +21,6 @@ public class EditGUIController {
     private Course currentCourse;
     @FXML
     public void initialize() throws SQLException {
-        //KARIN AND ILANA - find list of courses by user (saved gstatic in MenueGUIController) - into courses }
-
         courses= Model.getAllCourses(MenuGUIController.user.ID);
         for (String c : courses.keySet()) {
             coursesList.getItems().add(c);
@@ -67,7 +65,6 @@ public class EditGUIController {
     }
 
     private void showQuestions() throws SQLException {
-        //KARIN AND ILANA - find list of Question by course - into questions }
         coursesList.setDisable(true);
 
         for (Question q : currentCourse.getCourseQuestoins()) {
@@ -89,7 +86,6 @@ public class EditGUIController {
     }
 
     public void saveQuestionBody(ActionEvent actionEvent) throws SQLException {
-        //KARIN AND ILANA - change question in db
         String newQsBody=qBody_txtfld.getText();
         if(newQsBody.equals("")){
             showAlertError("invalid question!");
